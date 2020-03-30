@@ -1,0 +1,25 @@
+form {
+    max-width: 1500px !important;
+    text-align: center;
+}
+fieldset > .saml-account {
+    display: inline-block;
+    text-align: left;
+    width: 400px;
+    margin: 10px;
+    vertical-align: top;
+}
+fieldset > .saml-account > .saml-account {
+	padding-left: 0;
+}
+.saml-account-name > .name {
+    font-size: 80%;
+}
+.saml-account-name > .number {
+    color: gray;
+    font-size: 60%;
+    margin-left: 1em;
+}
+#input_signin_button {
+    padding-left: 0;
+}

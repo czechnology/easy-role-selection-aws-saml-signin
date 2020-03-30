@@ -1,0 +1,27 @@
+body{
+  min-width: 500px;
+  min-height: 300px;
+  display: block;
+}
+
+label {
+  font-size: 120%;
+  font-weight: bold;
+}
+
+textarea {
+  width: 450px;
+  height: 150px;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #202023;
+    color: #f9f9fa;
+  }
+
+  textarea, input[type=text] {
+    background-color: #202023;
+    color: #f9f9fa;
+  }
+}

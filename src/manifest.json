@@ -1,0 +1,28 @@
+{
+  "name": "Easier Role Selection for AWS SSO Sign-In page",
+  "description": "A simple addon to rearrange accounts on the Amazon Web Services (AWS) sign-in role selection page",
+  "version": "0.1.2",
+  "author": "Martin Kulhavy",
+  "homepage_url": "https://github.com/czechnology/easy-role-selection-aws-signin",
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://signin.aws.amazon.com/saml"],
+      "css": ["nicer-accounts.css"],
+      "js": ["nicer-accounts.js"]
+    }
+  ],
+  "options_ui": {
+    "page": "options.html"
+  },
+  "permissions": ["storage"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "nicer-aws-accounts@czechnology.cz",
+      "strict_min_version": "57.0a1"
+    }
+  }
+}

@@ -14,6 +14,12 @@ textarea {
   height: 150px;
 }
 
+#save-result {
+    margin-left: 10px;
+    color: #009900;
+    font-weight: bold;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #202023;

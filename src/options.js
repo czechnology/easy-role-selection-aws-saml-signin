@@ -8,6 +8,9 @@ function restoreOptions() {
 }
 
 function saveOptions(e) {
+    clearTimeout(resultTimeout);
+    resultNode.textContent = "";
+
     input = document.querySelector("#favourite-accounts-input");
     favouriteAccountsStr = input.value.trim();
     if (favouriteAccountsStr == "") {
@@ -20,7 +23,13 @@ function saveOptions(e) {
     });
     e.preventDefault();
     restoreOptions();
+
+    resultNode.textContent = "Options saved!";
+    resultTimeout = setTimeout(function(){resultNode.textContent = "";}, 3000);
 }
 
+var resultNode = document.querySelector("#save-result");
+var resultTimeout;
 document.addEventListener("DOMContentLoaded", restoreOptions);
 document.querySelector("form").addEventListener("submit", saveOptions);
+document.querySelector("textarea").addEventListener("change", saveOptions);

@@ -1,7 +1,7 @@
 {
   "name": "Easier Role Selection for AWS SSO SignIn page",
   "description": "A simple addon to rearrange accounts on the Amazon Web Services (AWS) sign-in role selection page",
-  "version": "0.1.2",
+  "version": "0.2.2",
   "author": "Martin Kulhavy",
   "homepage_url": "https://github.com/czechnology/easy-role-selection-aws-signin",
   "manifest_version": 2,

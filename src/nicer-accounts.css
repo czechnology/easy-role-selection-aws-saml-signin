@@ -2,6 +2,56 @@ form {
     max-width: 1500px !important;
     text-align: center;
 }
+form > p {
+    color: #066;
+    font-style: italic;
+}
+form > input {
+    width: 270px;
+    padding-left: 30px;
+    text-align: center;
+    font-size: 140%;
+    border: 1px solid gray;
+    color: black;
+    font-weight: bold;
+}
+.input-icon {
+    position: relative;
+    width: 25px;
+    margin-right: -25px;
+    z-index: 2;
+}
+.input-icon:before {
+    content: '\1f50d';  /* magnifying glass icon */
+}
+.help-ex {
+    display: inline-block;
+    position: relative;
+}
+.help-ex .help-icon {
+    margin-left: 5px;
+    width: 20px;
+}
+.help-ex .help-icon:before {
+    content: '\1f6c8';  /* circled information source */
+    font-size: 12pt;
+}
+.help-ex .help-tooltip {
+    visibility: hidden;
+    position: absolute;
+    width: 325px;
+    padding: 5pt 10pt;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.help-ex:hover .help-tooltip {
+    visibility: visible;
+}
+
+fieldset {
+    clear: right;
+}
 fieldset > .saml-account {
     display: inline-block;
     text-align: left;

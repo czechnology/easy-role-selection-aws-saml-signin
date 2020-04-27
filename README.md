@@ -1,6 +1,6 @@
-# Easier Role Selection for AWS SSO Sign-In page
+# Easier Role Selection for AWS SAML Sign-In page
 
-A simple Firefox addon / Chrome extension to rearrange accounts on the Amazon Web Services (AWS) sign-in role selection page.
+A simple Firefox addon / Chrome extension to rearrange and filter accounts on the Amazon Web Services (AWS) SAML sign-in role selection page.
 
 * [Firefox addon in Mozile addon store][1]
 * Chrome addon is in the works

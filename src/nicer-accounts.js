@@ -93,6 +93,20 @@ function selectNextRole(backwards) {
     visibleRadios[nextIndex].checked = true;
 }
 
+function selectRole(roleName) {
+    var matchingRolesElements = [...document.querySelectorAll(".saml-role")].filter(
+        div => div.querySelector("label.saml-role-description").textContent.toLowerCase() == roleName
+    );
+    if (matchingRolesElements.length == 0) {
+        console.warning("No role with name " + roleName + " found");
+        return false;
+    }
+
+    matchingRolesElements[0].querySelector("input[type=radio]").checked = true;
+    expandAccount(matchingRolesElements[0].parentElement.parentElement);
+    return true
+}
+
 function filterRoles() {
     var inputNode = document.querySelector("#role-filter-input");
     var filterParts = inputNode.value.toLowerCase().match(/\S+/g);
@@ -124,16 +138,28 @@ function filterRoles() {
     }
 }
 
-function getFavouriteAccounts(onFulfilled) {
-    key = "favouriteAccounts";
-    chrome.storage.sync.get(key, (res) => {
-        onFulfilled(res[key] || []);
-    });
+async function onContainerInfo(container) {
+    if (container.name === undefined) {
+        console.warning("Container name not available.");
+        return;
+    }
+
+    var roleFound = selectRole(container.name);
+    if (!roleFound) return;
+
+    res = await chrome.storage.sync.get("autoLogin");
+    autoLogin = res["autoLogin"];
+    if (autoLogin) {
+        document.querySelector("form#saml_form").submit();
+    }
 }
 
-function rearrangeAccounts(favouriteAccounts) {
+async function rearrangeAccounts() {
+    var res = await chrome.storage.sync.get("favouriteAccounts");
+    var favouriteAccounts = res["favouriteAccounts"] || [];
+
     // Changing innerHTML would be easier but causes warning during Firefox addon validation
-    pNode = document.querySelector("form > p");
+    pNode = document.querySelector("form#saml_form > p");
     pNode.style = ""
     pNode.textContent = "";
     aNode = document.createElement("a")
@@ -196,5 +222,10 @@ function rearrangeAccounts(favouriteAccounts) {
     });
 }
 
+async function main() {
+    rearrangeAccounts();
+    chrome.runtime.sendMessage({query: "container"}, onContainerInfo);
+}
+
 insertFilterInput();
-getFavouriteAccounts(rearrangeAccounts);
+main();

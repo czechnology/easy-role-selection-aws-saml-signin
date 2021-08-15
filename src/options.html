@@ -8,11 +8,18 @@
   </head>
   <body>
     <form>
-        <label>Favourite accounts (one per line):</label><br/>
+        <label for="favourite-accounts-input">Favourite accounts (one per line):</label><br/>
         <textarea id="favourite-accounts-input"></textarea>
         <p>
             Specify the account names (not account numbers), in the order you want to see them.<br/>
             Remaining accounts will be shown in alphabetic order, with roles list collapsed.
+        </p>
+        <hr/>
+        <input type="checkbox" id="auto-login-input"/>
+        <label for="auto-login-input">Automatically login using role whose name matches the current container name</label><br/>
+        <p>
+            If a role is found which has the same name as the current browser container,
+            it will be selected in the form and if the above checkbox is checked, it will be used to login automatically.
         </p>
         <button type="submit">Save</button><span id="save-result"></span>
     </form>

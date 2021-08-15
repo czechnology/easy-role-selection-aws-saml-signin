@@ -95,10 +95,14 @@ function selectNextRole(backwards) {
 
 function selectRole(roleName) {
     var matchingRolesElements = [...document.querySelectorAll(".saml-role")].filter(
-        div => div.querySelector("label.saml-role-description").textContent.toLowerCase() == roleName
+        div => div.querySelector("label.saml-role-description").textContent.toLowerCase().substring(0, 25) == roleName
     );
     if (matchingRolesElements.length == 0) {
         console.warning("No role with name " + roleName + " found");
+        return false;
+    }
+    if (matchingRolesElements.length > 1) {
+        console.warning("Multiple roles with prefix " + roleName + " found");
         return false;
     }
 
